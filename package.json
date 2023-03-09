@@ -8,8 +8,7 @@
 		"preview": "vite preview",
 		"test": "playwright test",
 		"test:unit": "vitest",
-		"lint": "eslint .",
-		"deploy": "touch build/.nojekyll && gh-pages -d build -t true"
+		"lint": "eslint ."
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
@@ -25,7 +24,6 @@
 	"type": "module",
 	"dependencies": {
 		"bootstrap": "^5.2.3",
-		"gh-pages": "^5.0.0",
 		"sveltestrap": "github:ClapClap-app/sveltestrap"
 	}
 }
