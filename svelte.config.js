@@ -1,6 +1,7 @@
 import adapter from '@sveltejs/adapter-static';
 
-export default {
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
 	kit: {
 		adapter: adapter({
 			// default options are shown. On some platforms
@@ -10,6 +11,12 @@ export default {
 			fallback: null,
 			precompress: false,
 			strict: true
-		})
+		}),
+		prerender: {
+			handleMissingId: 'warn',
+			handleHttpError: 'warn'
+		}
 	}
 };
+
+export default config

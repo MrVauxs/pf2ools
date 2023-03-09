@@ -26,6 +26,6 @@
 	"dependencies": {
 		"bootstrap": "^5.2.3",
 		"gh-pages": "^5.0.0",
-		"sveltestrap": "^5.10.0"
+		"sveltestrap": "github:ClapClap-app/sveltestrap"
 	}
 }

@@ -10,9 +10,7 @@
         NavLink,
         Form,
         FormGroup,
-        Label,
         Input,
-        Button,
     } from "sveltestrap";
 
     let rules, books, player, gamemaster, adventures, references, utilities, settings;
@@ -31,7 +29,7 @@
     <navbar>
         <Nav pills>
             <NavItem href="/">
-                <NavLink href="#">Home</NavLink>
+                <NavLink href="/">Home</NavLink>
             </NavItem>
             <Dropdown isOpen={rules ?? false} toggle={() => (rules = !rules)}>
                 <DropdownToggle nav caret>Rules</DropdownToggle>
