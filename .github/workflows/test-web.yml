@@ -1,13 +1,11 @@
 name: Tests
 on:
   pull_request:
-    branches: [master]
+    branches: [master, main]
   push:
-    tags:
-      - "v**"
-    branches: [master]
+    branches: [master, main]
   workflow_dispatch:
-    branches: [master]
+    branches: [master, main]
 
 jobs:
   playwright:

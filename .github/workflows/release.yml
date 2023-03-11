@@ -1,11 +1,7 @@
 name: Create Release
 
 on:
-  workflow_run:
-    workflows:
-      - "Tests"
-    types:
-      - "completed"
+  push:
     tags:
       - "v**"
 
@@ -30,6 +26,9 @@ jobs:
 
       - name: Build Site
         run: npm run build
+
+      - name: Test Site
+        run: npm test
 
       - name: Zip
         run: zip -r pf2ools.zip build/
