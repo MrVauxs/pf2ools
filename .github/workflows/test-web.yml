@@ -1,9 +1,11 @@
 name: Playwright Test
 on:
   pull_request:
-    types: [opened, reopened]
+    branches: [master]
   push:
-    branches: [ master ]
+    branches: [master]
+  workflow_dispatch:
+    branches: [master]
 
 jobs:
   test-web:
