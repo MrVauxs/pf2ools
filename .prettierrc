@@ -1,5 +1,14 @@
 {
     "bracketSameLine": true,
+    "svelteBracketSameLine": true,
     "svelteAllowShorthand": true,
-    "printWidth": 200
+    "printWidth": 200,
+    "tabWidth": 4,
+    "tabs": true,
+    "semi": true,
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "html-whitespace-sensitivity": "ignore",
+    "endOfLine": "lf"
 }
