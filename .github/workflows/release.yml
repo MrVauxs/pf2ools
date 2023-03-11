@@ -8,6 +8,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -25,9 +26,6 @@ jobs:
 
       - name: Build Site
         run: npm run build
-
-      - name: Test Site
-        run: npm test
 
       - name: Zip
         run: zip -r pf2ools.zip build/
