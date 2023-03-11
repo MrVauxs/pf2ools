@@ -14,6 +14,9 @@
 
   let search = "";
   let screenWidth = 0;
+
+  let pageID;
+  $: pageID = $page.route.id;
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -39,12 +42,12 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link" id="/" aria-current="page" href="/" class:active={$page.route.id === "/"}>Home</a>
+            <a class="nav-link" id="/" aria-current="page" href="/" class:active={pageID === "/"}>Home</a>
           </li>
           <!-- Rules Tab -->
           <li class="nav-item dropdown">
             <span
-              class:active={["/quickreference", "/variantrules", "/tables"].includes($page.route.id)}
+              class:active={["/quickreference", "/variantrules", "/tables"].includes(pageID)}
               class="nav-link dropdown-toggle"
               id="reference"
               role="button"
@@ -54,15 +57,15 @@
             </span>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" class:active={$page.route.id === "/quickreference"} href="/quickreference"> Quick Reference </a>
+                <a class="dropdown-item" class:active={pageID === "/quickreference"} href="/quickreference"> Quick Reference </a>
               </li>
               <li>
-                <a class="dropdown-item" class:active={$page.route.id === "/variantrules"} href="/variantrules"> Variant Rules & Subsystems </a>
+                <a class="dropdown-item" class:active={pageID === "/variantrules"} href="/variantrules"> Variant Rules & Subsystems </a>
               </li>
-              <li><a class="dropdown-item" class:active={$page.route.id === "/tables"} href="/tables">Tables</a></li>
+              <li><a class="dropdown-item" class:active={pageID === "/tables"} href="/tables">Tables</a></li>
               <li><hr class="dropdown-divider" /></li>
               <li>
-                <a class="dropdown-item" class:active={$page.route.id.includes("/books")} href="/books">Books &raquo;</a>
+                <a class="dropdown-item" class:active={pageID?.includes("/books")} href="/books">Books &raquo;</a>
                 <ul class="dropdown-menu dropdown-submenu" class:left={screenWidth <= 992}>
                   <a class="dropdown-item" href="/books">View All/Homebrew</a>
                   <li><hr class="dropdown-divider" /></li>
@@ -78,7 +81,7 @@
           <!-- Player Tab -->
           <li class="nav-item dropdown">
             <span
-              class:active={["/ancestries", "/backgrounds", "/classes", "/feats", "/archetypes", "/companionsfamiliars", "/optionalFeatures"].includes($page.route.id)}
+              class:active={["/ancestries", "/backgrounds", "/classes", "/feats", "/archetypes", "/companionsfamiliars", "/optionalFeatures"].includes(pageID)}
               class="nav-link dropdown-toggle"
               id="reference"
               role="button"
@@ -88,29 +91,29 @@
             </span>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" class:active={$page.route.id === "/ancestries"} href="/ancestries"> Ancestries </a>
+                <a class="dropdown-item" class:active={pageID === "/ancestries"} href="/ancestries"> Ancestries </a>
               </li>
               <li>
-                <a class="dropdown-item" class:active={$page.route.id === "/backgrounds"} href="/backgrounds"> Backgrounds </a>
+                <a class="dropdown-item" class:active={pageID === "/backgrounds"} href="/backgrounds"> Backgrounds </a>
               </li>
-              <li><a class="dropdown-item" class:active={$page.route.id === "/classes"} href="/classes">Classes</a></li>
-              <li><a class="dropdown-item" class:active={$page.route.id === "/feats"} href="/feats">Feats</a></li>
+              <li><a class="dropdown-item" class:active={pageID === "/classes"} href="/classes">Classes</a></li>
+              <li><a class="dropdown-item" class:active={pageID === "/feats"} href="/feats">Feats</a></li>
               <li><hr class="dropdown-divider" /></li>
               <li>
-                <a class="dropdown-item" class:active={$page.route.id === "/archetypes"} href="/archetypes">Archetypes</a>
+                <a class="dropdown-item" class:active={pageID === "/archetypes"} href="/archetypes">Archetypes</a>
               </li>
               <li>
-                <a class="dropdown-item" class:active={$page.route.id === "/companionsfamiliars"} href="/companionsfamiliars">Companions & Familiars</a>
+                <a class="dropdown-item" class:active={pageID === "/companionsfamiliars"} href="/companionsfamiliars">Companions & Familiars</a>
               </li>
               <li>
-                <a class="dropdown-item" class:active={$page.route.id === "/optionalFeatures"} href="/optionalFeatures">Optional Features</a>
+                <a class="dropdown-item" class:active={pageID === "/optionalFeatures"} href="/optionalFeatures">Optional Features</a>
               </li>
             </ul>
           </li>
           <!-- Gamemaster Tab -->
           <li class="nav-item dropdown">
             <span
-              class:active={["/gmscreen", "/events", "/hazards", "/relicsgifts", "/adventures"].includes($page.route.id)}
+              class:active={["/gmscreen", "/events", "/hazards", "/relicsgifts", "/adventures"].includes(pageID)}
               class="nav-link dropdown-toggle"
               id="reference"
               role="button"
@@ -120,20 +123,20 @@
             </span>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" class:active={$page.route.id === "/gmscreen"} href="/gmscreen"> GM Screen </a>
+                <a class="dropdown-item" class:active={pageID === "/gmscreen"} href="/gmscreen"> GM Screen </a>
               </li>
               <li><hr class="dropdown-divider" /></li>
               <li>
-                <a class="dropdown-item" class:active={$page.route.id.includes("/adventures")} href="/adventures">Adventures &raquo;</a>
+                <a class="dropdown-item" class:active={pageID?.includes("/adventures")} href="/adventures">Adventures &raquo;</a>
                 <ul class="dropdown-menu dropdown-submenu" class:left={screenWidth <= 992}>
                   <a class="dropdown-item" href="/books">View All/Homebrew</a>
                   <li><hr class="dropdown-divider" /></li>
                   <li><a class="dropdown-item disabled" href="/">Strength of Thousand Contributors</a></li>
                 </ul>
               </li>
-              <li><a class="dropdown-item" class:active={$page.route.id === "/events"} href="/events">Events</a></li>
-              <li><a class="dropdown-item" class:active={$page.route.id === "/hazards"} href="/hazards">Hazards</a></li>
-              <li><a class="dropdown-item" class:active={$page.route.id === "/relicsgifts"} href="/relicsgifts">Relic Gifts</a></li>
+              <li><a class="dropdown-item" class:active={pageID === "/events"} href="/events">Events</a></li>
+              <li><a class="dropdown-item" class:active={pageID === "/hazards"} href="/hazards">Hazards</a></li>
+              <li><a class="dropdown-item" class:active={pageID === "/relicsgifts"} href="/relicsgifts">Relic Gifts</a></li>
             </ul>
           </li>
         </ul>
@@ -155,6 +158,9 @@
   header {
     box-shadow: 0 1px 8px rgb(0 0 0 / 48%);
     background-color: #6f1c17;
+  }
+  header + .navbar {
+    padding: 0;
   }
   header :global(.title) {
     margin-right: 0.2em;
@@ -179,6 +185,14 @@
     margin: 0.5em;
     padding: revert;
     color: #dac485;
+  }
+  .nav-item {
+    user-select: none;
+  }
+
+  .navbar-nav .nav-link {
+    border-radius: 0 0 var(--bs-nav-pills-border-radius) var(--bs-nav-pills-border-radius);
+    padding: 8px 16px;
   }
 
   .dropdown-menu li {
