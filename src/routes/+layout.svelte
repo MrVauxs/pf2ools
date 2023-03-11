@@ -1,173 +1,174 @@
 <script>
-    import "bootstrap/dist/css/bootstrap.min.css";
-    import {
-        Nav,
-        NavItem,
-        Dropdown,
-        DropdownItem,
-        DropdownToggle,
-        DropdownMenu,
-        NavLink,
-        Form,
-        FormGroup,
-        Input,
-    } from "sveltestrap";
+  import "bootstrap/dist/css/bootstrap.min.css";
+  onMount(() => {
+    import("bootstrap/dist/js/bootstrap.bundle.min.js");
+  });
+  import "@fortawesome/fontawesome-free/css/all.min.css";
+  import { page } from "$app/stores";
+  import { onMount } from "svelte";
 
-    let rules, books, player, gamemaster, adventures, references, utilities, settings;
+  const header = `
+    <h1 class="title">PF<span class="tools">2ools</span>.</h1>
+    <p class="subtitle tools">A suite of tools for 2nd Edition Pathfinder players and Game Masters.</p>
+  `;
+
+  let search;
 </script>
 
 <header>
-    <div class="container">
-        <h1 class="title">PF<span class="tools">2ools</span></h1>
-        <p class="subtitle">
-            A suite of tools for 2nd Edition Pathfinder players and Game
-            Masters.
-        </p>
-    </div>
+  <div class="container d-none d-md-block">
+    {@html header}
+  </div>
 </header>
-<div class="container">
-    <navbar>
-        <Nav pills>
-            <NavItem href="/">
-                <NavLink href="/">Home</NavLink>
-            </NavItem>
-            <Dropdown isOpen={rules ?? false} toggle={() => (rules = !rules)}>
-                <DropdownToggle nav caret>Rules</DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem>Quick Reference</DropdownItem>
-                    <DropdownItem>Variant Rules & Subsystems</DropdownItem>
-                    <DropdownItem>Tables</DropdownItem>
-                    <DropdownItem divider />
-                    <Dropdown direction="right" isOpen={books ?? false} toggle={() => (books = !books)}>
-                        <DropdownToggle nav caret>Books</DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem>Browse All</DropdownItem>
-                            <DropdownItem divider />
-                            <!-- Add Books here automatically-->
-                            <DropdownItem disabled>Core Rulebook</DropdownItem>
-                        </DropdownMenu>
-                    </Dropdown>
-                </DropdownMenu>
-            </Dropdown>
-            <Dropdown isOpen={player ?? false} toggle={() => (player = !player)}>
-                <DropdownToggle nav caret>Player</DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem>Ancestries</DropdownItem>
-                    <DropdownItem>Backgrounds</DropdownItem>
-                    <DropdownItem>Classes</DropdownItem>
-                    <DropdownItem>Feats</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Archetypes</DropdownItem>
-                    <DropdownItem>Companions & Familiars</DropdownItem>
-                    <DropdownItem>Optional Features</DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
-            <Dropdown isOpen={gamemaster ?? false} toggle={() => (gamemaster = !gamemaster)}>
-                <DropdownToggle nav caret>Game Master</DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem>GM Screen</DropdownItem>
-                    <DropdownItem divider />
-                    <Dropdown direction="right" isOpen={adventures ?? false} toggle={() => (adventures = !adventures)}>
-                        <DropdownToggle nav caret>Adventures</DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem>Browse All</DropdownItem>
-                            <DropdownItem divider />
-                            <!-- Add Books here automatically-->
-                            <DropdownItem disabled>Strength of Thousand Contributors</DropdownItem>
-                        </DropdownMenu>
-                    </Dropdown>
-                    <DropdownItem>Events</DropdownItem>
-                    <DropdownItem>Hazards</DropdownItem>
-                    <DropdownItem>Relic Gifts</DropdownItem> <!-- Should this be in Game Master by this point? -->
-                    <DropdownItem divider />
-                    <DropdownItem>Creature Abilities</DropdownItem>
-                    <DropdownItem>Creature Templates</DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
-            <Dropdown isOpen={references ?? false} toggle={() => (references = !references)}>
-                <DropdownToggle nav caret>Game Master</DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem>Actions</DropdownItem>
-                    <DropdownItem>Bestiary</DropdownItem>
-                    <DropdownItem>Conditions</DropdownItem>
-                    <DropdownItem>Items</DropdownItem>
-                    <DropdownItem>Spells</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Afflictions</DropdownItem>
-                    <DropdownItem>Rituals</DropdownItem>
-                    <DropdownItem>Vehicles</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Deities</DropdownItem>
-                    <DropdownItem>Languages</DropdownItem>
-                    <DropdownItem>Planes & Places</DropdownItem>
-                    <DropdownItem>Organizations</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Traits</DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
-            <Dropdown isOpen={utilities ?? false} toggle={() => (utilities = !utilities)}>
-                <DropdownToggle nav caret>Utilities</DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem>Search</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Homebrew Manager</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Initiative Tracker Player View</DropdownItem>
-                    <DropdownItem>Renderer Demo</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Text Converter</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Changelog</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Privacy Policy</DropdownItem>
-                    <DropdownItem>Licenses</DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
-            <Dropdown isOpen={settings ?? false} toggle={() => (settings = !settings)}>
-                <DropdownToggle nav caret>Settings</DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem>Configure Styling</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Save State to File</DropdownItem>
-                    <DropdownItem>Load State from File</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Add as an App</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Preload Images</DropdownItem>
-                    <DropdownItem>Reset Preloaded Data</DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
-            <Form>
-                <FormGroup>
-                    <Input
-                        type="search"
-                        id="omnisearch"
-                        placeholder="Search Everywhere..."
-                    />
-                </FormGroup>
-            </Form>
-        </Nav>
-    </navbar>
 
-    <slot />
-</div>
+<nav class="navbar navbar-expand-md nav-pills">
+  <div class="container-md">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon" />
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <header>
+          {@html header}
+        </header>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" />
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" id="/" aria-current="page" href="/" class:active={$page.route.id === "/"}>Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <span
+              class:active={["/quickreference", "/variantrules", "/tables"].includes($page.route.id)}
+              class="nav-link dropdown-toggle"
+              id="reference"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Rules
+            </span>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" class:active={$page.route.id === "/quickreference"} href="/quickreference"> Quick Reference </a>
+              </li>
+              <li>
+                <a class="dropdown-item" class:active={$page.route.id === "/variantrules"} href="/variantrules"> Variant Rules & Subsystems </a>
+              </li>
+              <li><a class="dropdown-item" class:active={$page.route.id === "/tables"} href="/tables">Tables</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" class:active={$page.route.id.includes("/books")} href="/books">Books &raquo;</a>
+                <ul class="dropdown-menu dropdown-submenu" class:left={true}>
+                  <a class="dropdown-item" href="/books">View All/Homebrew</a>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li role="presentation" class="xs">Core</li>
+                  <li><a class="dropdown-item" href="/">Core Rulebook</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li role="presentation" class="xs">Lost Omens</li>
+                  <li><a class="dropdown-item" href="/">Lost Omens: World Guide</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <span
+              class:active={["/ancestries", "/backgrounds", "/classes", "/feats", "/archetypes", "/companionsfamiliars", "/optionalFeatures"].includes($page.route.id)}
+              class="nav-link dropdown-toggle"
+              id="reference"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Player
+            </span>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" class:active={$page.route.id === "/ancestries"} href="/ancestries"> Ancestries </a>
+              </li>
+              <li>
+                <a class="dropdown-item" class:active={$page.route.id === "/backgrounds"} href="/backgrounds"> Backgrounds </a>
+              </li>
+              <li><a class="dropdown-item" class:active={$page.route.id === "/classes"} href="/classes">Classes</a></li>
+              <li><a class="dropdown-item" class:active={$page.route.id === "/feats"} href="/feats">Feats</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" class:active={$page.route.id === "/archetypes"} href="/archetypes">Archetypes</a>
+              </li>
+              <li>
+                <a class="dropdown-item" class:active={$page.route.id === "/companionsfamiliars"} href="/companionsfamiliars">Companions & Familiars</a>
+              </li>
+              <li>
+                <a class="dropdown-item" class:active={$page.route.id === "/optionalFeatures"} href="/optionalFeatures">Optional Features</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <form role="search">
+          <div class="input-group d-none d-sm-none">
+            <input class="form-control" type="search" placeholder="Search everywhere..." aria-label="Search" bind:value={search} />
+            <button class="input-group-text" type="submit"><i class="fa-solid fa-magnifying-glass" /></button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <form role="search">
+      <div class="input-group d-flex d-md-flex">
+        <input class="form-control" type="search" placeholder="Search everywhere..." aria-label="Search" bind:value={search} />
+        <button class="input-group-text" type="submit"><i class="fa-solid fa-magnifying-glass" /></button>
+      </div>
+    </form>
+  </div>
+</nav>
 
+<slot />
+
+<!-- On the topic of :global()'s https://stackoverflow.com/a/56611837/12227966 -->
 <style>
-    header {
-        box-shadow: 0 1px 8px rgb(0 0 0 / 48%);
-        background-color: #6f1c17;
-    }
-    .title {
-        margin-right: 10px;
-        display: inline;
-        color: #ededed;
-    }
-    .subtitle {
-        display: inline;
-        font-style: italic;
-        color: #dac485;
-    }
-    .tools {
-        color: #dac485;
-    }
+  header {
+    box-shadow: 0 1px 8px rgb(0 0 0 / 48%);
+    background-color: #6f1c17;
+  }
+  header :global(.title) {
+    margin-right: 0.2em;
+    display: inline;
+    color: #ededed;
+  }
+  header :global(.subtitle) {
+    display: inline;
+    font-style: italic;
+  }
+  header :global(.tools) {
+    color: #dac485;
+  }
+  .offcanvas-header {
+    background-color: #6f1c17;
+    padding: 0 0 0 0;
+  }
+  .offcanvas-header header {
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  .btn-close {
+    margin: 0.5em;
+    padding: revert;
+    color: #dac485;
+  }
+
+  .dropdown-menu li {
+    position: relative;
+  }
+  .dropdown-menu .dropdown-submenu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    left: 100%;
+    top: -7px;
+  }
+  .dropdown-menu .dropdown-submenu.left {
+    top: 2.5em;
+    right: auto;
+    left: auto;
+  }
+  .dropdown-menu > li:hover > .dropdown-submenu {
+    display: block;
+  }
 </style>
