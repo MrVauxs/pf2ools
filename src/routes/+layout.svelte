@@ -12,8 +12,11 @@
     <p class="subtitle tools">A suite of tools for 2nd Edition Pathfinder players and Game Masters.</p>
   `;
 
-  let search;
+  let search = "";
+  let screenWidth = 0;
 </script>
+
+<svelte:window bind:innerWidth={screenWidth} />
 
 <header>
   <div class="container d-none d-md-block">
@@ -38,6 +41,7 @@
           <li class="nav-item">
             <a class="nav-link" id="/" aria-current="page" href="/" class:active={$page.route.id === "/"}>Home</a>
           </li>
+          <!-- Rules Tab -->
           <li class="nav-item dropdown">
             <span
               class:active={["/quickreference", "/variantrules", "/tables"].includes($page.route.id)}
@@ -59,7 +63,7 @@
               <li><hr class="dropdown-divider" /></li>
               <li>
                 <a class="dropdown-item" class:active={$page.route.id.includes("/books")} href="/books">Books &raquo;</a>
-                <ul class="dropdown-menu dropdown-submenu" class:left={true}>
+                <ul class="dropdown-menu dropdown-submenu" class:left={screenWidth <= 992}>
                   <a class="dropdown-item" href="/books">View All/Homebrew</a>
                   <li><hr class="dropdown-divider" /></li>
                   <li role="presentation" class="xs">Core</li>
@@ -71,6 +75,7 @@
               </li>
             </ul>
           </li>
+          <!-- Player Tab -->
           <li class="nav-item dropdown">
             <span
               class:active={["/ancestries", "/backgrounds", "/classes", "/feats", "/archetypes", "/companionsfamiliars", "/optionalFeatures"].includes($page.route.id)}
@@ -102,13 +107,36 @@
               </li>
             </ul>
           </li>
+          <!-- Gamemaster Tab -->
+          <li class="nav-item dropdown">
+            <span
+              class:active={["/gmscreen", "/events", "/hazards", "/relicsgifts", "/adventures"].includes($page.route.id)}
+              class="nav-link dropdown-toggle"
+              id="reference"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Gamemaster
+            </span>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" class:active={$page.route.id === "/gmscreen"} href="/gmscreen"> GM Screen </a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" class:active={$page.route.id.includes("/adventures")} href="/adventures">Adventures &raquo;</a>
+                <ul class="dropdown-menu dropdown-submenu" class:left={screenWidth <= 992}>
+                  <a class="dropdown-item" href="/books">View All/Homebrew</a>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item disabled" href="/">Strength of Thousand Contributors</a></li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" class:active={$page.route.id === "/events"} href="/events">Events</a></li>
+              <li><a class="dropdown-item" class:active={$page.route.id === "/hazards"} href="/hazards">Hazards</a></li>
+              <li><a class="dropdown-item" class:active={$page.route.id === "/relicsgifts"} href="/relicsgifts">Relic Gifts</a></li>
+            </ul>
+          </li>
         </ul>
-        <form role="search">
-          <div class="input-group d-none d-sm-none">
-            <input class="form-control" type="search" placeholder="Search everywhere..." aria-label="Search" bind:value={search} />
-            <button class="input-group-text" type="submit"><i class="fa-solid fa-magnifying-glass" /></button>
-          </div>
-        </form>
       </div>
     </div>
     <form role="search">
