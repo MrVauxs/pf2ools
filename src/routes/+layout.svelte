@@ -1,11 +1,8 @@
 <script>
 	import "bootstrap/dist/css/bootstrap.min.css";
-	onMount(() => {
-		import("bootstrap/dist/js/bootstrap.bundle.min.js");
-	});
+	import "bootstrap/dist/js/bootstrap.bundle.min.js";
 	import "@fortawesome/fontawesome-free/css/all.min.css";
 	import { page } from "$app/stores";
-	import { onMount } from "svelte";
 
 	const header = `
     <h1 class="title">PF<span class="tools">2ools</span>.</h1>
