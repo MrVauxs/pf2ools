@@ -1,5 +1,6 @@
 <svelte:head>
 	<title>PF2ools</title>
+	<meta name="description" content="A suite of tools for Pathfinder&nbsp;2nd&nbsp;Edition players and Game&nbsp;Masters." />
 </svelte:head>
 
 <div class="container">
