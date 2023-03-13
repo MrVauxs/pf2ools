@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "npm run lint && npm run prettier && vite build",
+		"version": ".github/build_npm.sh",
 		"preview": "vite preview",
 		"test": "playwright test",
 		"test:unit": "vitest",
