@@ -5,7 +5,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "npm run lint && npm run prettier && vite build",
-		"add-tag": ".github/add-new-tag.sh",
+		"increment-and-tag": ".github/increment-and-tag.sh",
+		"push": "npm run add-tag && git push --tags",
 		"preview": "vite preview",
 		"test": "playwright test",
 		"test:unit": "vitest",
