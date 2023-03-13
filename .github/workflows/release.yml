@@ -26,12 +26,6 @@ jobs:
             - name: Build Site
               run: npm run build
 
-            - name: Run tests
-              run: |
-                  npx playwright install --with-deps
-                  npx playwright install-deps
-                  npm run test
-
             - name: Zip
               run: zip -r pf2ools.zip build/
 

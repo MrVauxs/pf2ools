@@ -1,6 +1,6 @@
 <svelte:head>
 	<title>PF2ools - Variant Rules</title>
-	<meta content="Pf2eTools" property="og:site_name" />
+	<meta content="PF2ools" property="og:site_name" />
 	<meta content="Variant Rules" property="og:title" />
 </svelte:head>
 
