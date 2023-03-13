@@ -8,5 +8,5 @@ git commit -m "Commit message"
 if [ "$version" != "" ]; then
     git tag -a "v$version" -m "`git log -1 --format=%s`"
     echo "Created a new tag, v$version"
-    git push --tags
+    # git push --tags
 fi
