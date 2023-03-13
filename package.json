@@ -5,13 +5,13 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "npm run lint && npm run prettier && vite build",
-		"increment-and-tag": ".github/increment-and-tag.sh",
-		"push": "npm run add-tag && git push --tags",
 		"preview": "vite preview",
 		"test": "playwright test",
 		"test:unit": "vitest",
 		"lint": "eslint .",
-		"prettier": "prettier --write ."
+		"prettier": "prettier --write .",
+		"increment-and-tag": ".github/increment-and-tag.sh",
+		"push": "npm run increment-and-tag && git push --tags"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
