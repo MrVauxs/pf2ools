@@ -14,3 +14,5 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
+
+https://github.com/kaisermann/svelte-i18n/blob/main/docs/Getting%20Started.md
