@@ -16,3 +16,5 @@ npm run dev -- --open
 ```
 
 https://github.com/kaisermann/svelte-i18n/blob/main/docs/Getting%20Started.md
+
+https://github.com/TheComputerM/awesome-svelte

@@ -140,6 +140,72 @@
 							<li><a class="dropdown-item" class:active={pageID === "/relicsgifts"} href="/relicsgifts">Relic Gifts</a></li>
 						</ul>
 					</li>
+					<!-- References Tab -->
+					<li class="nav-item dropdown">
+						<span
+							class:active={[
+								"/actions",
+								"/bestiary",
+								"/conditions",
+								"/items",
+								"/spells",
+								"/afflictions",
+								"/rituals",
+								"/vehicles",
+								"/deities",
+								"/languages",
+								"/places",
+								"/organizations",
+								"/creatureabilities",
+								"/creaturetemplates",
+								"/traits"
+							].includes(pageID)}
+							class="nav-link dropdown-toggle"
+							id="reference"
+							role="button"
+							data-bs-toggle="dropdown"
+							aria-expanded="false">
+							References
+						</span>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" class:active={pageID === "/actions"} href="/actions">Actions</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/bestiary"} href="/bestiary">Bestiary</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/conditions"} href="/conditions">Conditions</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/items"} href="/items">Items</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/spells"} href="/spells">Spells</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" class:active={pageID === "/afflictions"} href="/afflictions">Afflictions</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/rituals"} href="/rituals">Rituals</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/vehicles"} href="/vehicles">Vehicles</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" class:active={pageID === "/deities"} href="/deities">Deities</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/languages"} href="/languages">Languages</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/places"} href="/places">Planes & Places</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/organizations"} href="/organizations">Organizations</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" class:active={pageID === "/creatureabilities"} href="/creatureabilities">Creature Abilities</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/creaturetemplates"} href="/creaturetemplates">Creature Templates</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/traits"} href="/traits">Traits</a></li>
+						</ul>
+					</li>
+					<!-- Utilities Tab -->
+					<li class="nav-item dropdown">
+						<span class:active={[""].includes(pageID)} class="nav-link dropdown-toggle" id="reference" role="button" data-bs-toggle="dropdown" aria-expanded="false">Utilities</span>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" class:active={pageID === "/search"} href="/search">Search</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/managebrew"} href="/managebrew">Homebrew Manager</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" class:active={pageID === "/inittrackerplayerview"} href="/inittrackerplayerview">Initiative Tracker Player View</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" class:active={pageID === "/renderdemo"} href="/renderdemo">Renderer Demo</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/textconverter"} href="/textconverter">Text Converter</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" class:active={pageID === "/changelog"} href="/changelog">Changelog</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" class:active={pageID === "/privacy-policy"} href="/privacy-policy">Privacy Policy</a></li>
+							<li><a class="dropdown-item" class:active={pageID === "/licenses"} href="/licenses">Licenses</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
