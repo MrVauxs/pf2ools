@@ -11,7 +11,7 @@
 		"lint": "eslint .",
 		"prettier": "prettier --write .",
 		"increment-and-tag": ".github/increment-and-tag.sh",
-		"push": "npm run increment-and-tag && git push --tags"
+		"push": "npm run increment-and-tag && git push && git push --tags"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
