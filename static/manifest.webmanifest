@@ -1,0 +1,30 @@
+{
+	"$schema": "https://json.schemastore.org/web-manifest-combined.json",
+	"manifest_version": 2,
+	"default_locale": "en",
+	"name": "PF2ools",
+	"short_name": "PF2ools",
+	"description": "A suite of browser-based tools for 2nd Edition Pathfinder players and Game Masters.",
+	"icons": [
+		{
+			"src": "%sveltekit.assets%/img/logo/png/android-chrome-192x192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "%sveltekit.assets%/img/logo/png/android-chrome-256x256.png",
+			"type": "image/png",
+			"sizes": "256x256"
+		},
+		{
+			"src": "%sveltekit.assets%/img/logo/png/android-chrome-384x384.png",
+			"type": "image/png",
+			"sizes": "384x384"
+		}
+	],
+	"start_url": ".",
+	"background_color": "#5E0000",
+	"display": "standalone",
+	"theme_color": "#5E0000",
+	"permissions": ["clipboardWrite"]
+}
